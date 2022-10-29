@@ -1,3 +1,5 @@
+<svelte:options tag="my-counter" />
+
 <script>
   let count = 0
   const increment = () => {
