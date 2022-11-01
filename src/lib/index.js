@@ -1,0 +1,2 @@
+import './Counter.svelte';
+

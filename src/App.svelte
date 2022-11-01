@@ -1,30 +1,28 @@
 <svelte:options tag="my-app" />
 
 <script>
-  import svelteLogo from './assets/svelte.svg'
-  import Counter from './lib/Counter.svelte'
+  import MyCounter from "./lib/Counter.svelte";
+
+  let counterElement;
+
+  function handleIncrement(event) {
+    console.debug("handle increment ", event);
+  }
+
+  function handleIncrementParent(event) {
+    console.debug("handle increment parent:", event);
+  }
 </script>
 
 <main>
   <div>
-  <div class="card">
-    <my-counter></my-counter>
+    <h1>My App</h1>
+    <div class="card" on:increment={handleIncrementParent}>
+      <my-counter
+        on:increment={handleIncrement}
+        color="custom color"
+        bind:this={counterElement}
+      />
+    </div>
   </div>
 </main>
-
-<style>
-  .logo {
-    height: 6em;
-    padding: 1.5em;
-    will-change: filter;
-  }
-  .logo:hover {
-    filter: drop-shadow(0 0 2em #646cffaa);
-  }
-  .logo.svelte:hover {
-    filter: drop-shadow(0 0 2em #ff3e00aa);
-  }
-  .read-the-docs {
-    color: #888;
-  }
-</style>
